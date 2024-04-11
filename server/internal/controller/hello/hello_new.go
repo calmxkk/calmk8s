@@ -5,7 +5,7 @@
 package hello
 
 import (
-	"server/api/hello"
+	"calmk8s/api/hello"
 )
 
 type ControllerV1 struct{}

@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"server/internal/model/input"
+	"calmk8s/internal/model/input"
 
 	"github.com/gogf/gf/v2/frame/g"
 )

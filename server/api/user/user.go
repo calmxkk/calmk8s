@@ -7,7 +7,7 @@ package user
 import (
 	"context"
 
-	"server/api/user/v1"
+	"calmk8s/api/user/v1"
 )
 
 type IUserV1 interface {

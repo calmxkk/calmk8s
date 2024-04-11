@@ -7,7 +7,7 @@ package hello
 import (
 	"context"
 
-	"server/api/hello/v1"
+	"calmk8s/api/hello/v1"
 )
 
 type IHelloV1 interface {

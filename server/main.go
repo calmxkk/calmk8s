@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "server/internal/packed"
+	_ "calmk8s/internal/packed"
 
 	"github.com/gogf/gf/v2/os/gctx"
 
-	"server/internal/cmd"
+	"calmk8s/internal/cmd"
 )
 
 func main() {

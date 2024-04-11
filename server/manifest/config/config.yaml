@@ -8,4 +8,6 @@ logger:
   stdout: true
 
 
-
+cache:
+  adapter: "file"                    # 缓存驱动方式，支持：memory|redis|file，不填默认memory
+  fileDir: "./storage/cache"         # 文件缓存路径，adapter=file时必填

@@ -5,7 +5,7 @@
 package user
 
 import (
-	"server/api/user"
+	"calmk8s/api/user"
 )
 
 type ControllerV1 struct{}

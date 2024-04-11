@@ -1,8 +1,8 @@
 package user
 
 import (
+	"calmk8s/internal/model/input"
 	"context"
-	"server/internal/model/input"
 )
 
 type sUser struct{}

@@ -1,8 +1,8 @@
 package user
 
 import (
+	v1 "calmk8s/api/user/v1"
 	"context"
-	v1 "server/api/user/v1"
 
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
