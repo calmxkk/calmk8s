@@ -8,6 +8,7 @@ import (
 	"github.com/gogf/gf/v2/os/gcmd"
 
 	"calmk8s/internal/controller/hello"
+	"calmk8s/internal/route"
 )
 
 var (
@@ -22,7 +23,10 @@ var (
 				group.Bind(
 					hello.NewV1(),
 				)
+
+				route.User(ctx, group)
 			})
+
 			s.Run()
 			return nil
 		},

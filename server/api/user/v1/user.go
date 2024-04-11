@@ -8,7 +8,7 @@ import (
 
 // RegisterReq 提交账号注册
 type RegisterReq struct {
-	g.Meta `path:"/site/register" method:"post" tags:"后台基础" summary:"账号注册"`
+	g.Meta `path:"/user/register" method:"post" tags:"后台基础" summary:"账号注册"`
 	input.RegisterInp
 }
 
@@ -18,7 +18,7 @@ type RegisterRes struct {
 
 // LoginCaptchaReq 获取登录验证码
 type LoginCaptchaReq struct {
-	g.Meta `path:"/site/captcha" method:"get" tags:"后台基础" summary:"获取登录验证码"`
+	g.Meta `path:"/user/captcha" method:"get" tags:"后台基础" summary:"获取登录验证码"`
 }
 
 type LoginCaptchaRes struct {
@@ -28,7 +28,7 @@ type LoginCaptchaRes struct {
 
 // AccountLoginReq 登录
 type AccountLoginReq struct {
-	g.Meta `path:"/site/accountLogin" method:"post" tags:"后台基础" summary:"账号登录"`
+	g.Meta `path:"/user/accountLogin" method:"post" tags:"后台基础" summary:"账号登录"`
 	input.AccountLoginInp
 }
 
@@ -38,7 +38,7 @@ type AccountLoginRes struct {
 
 // LoginLogoutReq 注销登录
 type LoginLogoutReq struct {
-	g.Meta `path:"/site/logout" method:"post" tags:"后台基础" summary:"注销登录"`
+	g.Meta `path:"/user/logout" method:"post" tags:"后台基础" summary:"注销登录"`
 }
 
 type LoginLogoutRes struct{}
