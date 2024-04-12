@@ -6,15 +6,13 @@ import (
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"calmk8s/api/k8s/pod/v1"
+	v1 "calmk8s/api/k8s/pod/v1"
 )
 
 func (c *ControllerV1) CreatePod(ctx context.Context, req *v1.CreatePodReq) (res *v1.CreatePodRes, err error) {
 	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }
-func (c *ControllerV1) CreatePodByYaml(ctx context.Context, req *v1.CreatePodByYamlReq) (res *v1.CreatePodByYamlRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
-}
+
 func (c *ControllerV1) GetPod(ctx context.Context, req *v1.GetPodReq) (res *v1.GetPodRes, err error) {
 	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }
