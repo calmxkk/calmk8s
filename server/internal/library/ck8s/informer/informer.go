@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func NewSharedInformerFactory(config *model.ClusterConfig, stop <-chan struct{}) (*informers.SharedInformerFactory, error) {
+func NewSharedInformerFactory(config *model.ClusterConfig, stop <-chan struct{}) (informers.SharedInformerFactory, error) {
 	var (
 		cli = &client.Client{}
 		err error
@@ -41,5 +41,5 @@ func NewSharedInformerFactory(config *model.ClusterConfig, stop <-chan struct{})
 	sharedInformerFactory.Start(stop)
 	sharedInformerFactory.WaitForCacheSync(stop)
 
-	return &sharedInformerFactory, nil
+	return sharedInformerFactory, nil
 }

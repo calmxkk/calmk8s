@@ -20,7 +20,7 @@ type K8sInformer struct {
 	Name     string
 	stopCh   chan struct{}
 	config   *model.ClusterConfig
-	Informer *informers.SharedInformerFactory
+	Informer informers.SharedInformerFactory
 }
 
 var AllCluster = make(map[string]*K8sInformer)
