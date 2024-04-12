@@ -4,6 +4,7 @@ import (
 	"calmk8s/internal/library/ck8s/informer"
 	"calmk8s/internal/model"
 	"calmk8s/internal/model/input/k8sin"
+	"calmk8s/internal/service"
 	"context"
 	"k8s.io/client-go/informers"
 
@@ -14,6 +15,10 @@ type sCluster struct{}
 
 func NewCluster() *sCluster {
 	return &sCluster{}
+}
+
+func init() {
+	service.RegisterCluster(NewCluster())
 }
 
 type K8sInformer struct {
