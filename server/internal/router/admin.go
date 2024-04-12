@@ -1,13 +1,13 @@
-package route
+package router
 
 import (
-	"calmk8s/internal/controller/user"
+	"calmk8s/internal/controller/admin/user"
 	"context"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )
 
-func User(ctx context.Context, group *ghttp.RouterGroup) {
+func Admin(ctx context.Context, group *ghttp.RouterGroup) {
 	group.Group("/user", func(group *ghttp.RouterGroup) {
 
 		group.Middleware()
@@ -15,5 +15,4 @@ func User(ctx context.Context, group *ghttp.RouterGroup) {
 			user.NewV1(),
 		)
 	})
-
 }

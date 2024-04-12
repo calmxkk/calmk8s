@@ -36,8 +36,8 @@ type Port struct {
 }
 
 type Resources struct {
-	Requests
-	Limits
+	Requests Requests `json:"requestes"`
+	Limits   Limits   `json:"limits"`
 }
 
 type Requests struct {

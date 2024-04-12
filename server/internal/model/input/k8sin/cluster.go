@@ -1,12 +1,13 @@
 package k8sin
 
 type Cluster struct {
-	Name          string      `json:"name"`
-	CaCertificate Certificate `json:"caCertificate"`
-	PrivateKey    []byte      `json:"privateKey"`
-	Status        Status      `json:"status"`
-	Labels        []string    `json:"labels"`
-	Namespace     string      `json:"namespace"`
+	Name           string         `json:"name"`
+	CaCertificate  Certificate    `json:"caCertificate"`
+	PrivateKey     []byte         `json:"privateKey"`
+	Status         Status         `json:"status"`
+	Labels         []string       `json:"labels"`
+	Namespace      string         `json:"namespace"`
+	Authentication Authentication `json:"authentication"`
 }
 
 type Connect struct {

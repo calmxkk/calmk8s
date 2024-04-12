@@ -10,3 +10,4 @@ type PodSpec struct {
 	Containers    []Container `json:"containers"`
 	RestartPolicy string      `json:"restartPolicy"`
 }
+

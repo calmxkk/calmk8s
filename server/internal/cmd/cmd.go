@@ -7,8 +7,7 @@ import (
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
 
-	"calmk8s/internal/controller/hello"
-	"calmk8s/internal/route"
+	"calmk8s/internal/router"
 )
 
 var (
@@ -20,11 +19,9 @@ var (
 			s := g.Server()
 			s.Group("/", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
-				group.Bind(
-					hello.NewV1(),
-				)
 
-				route.User(ctx, group)
+				router.Admin(ctx, group)
+				router.K8s(ctx, group)
 			})
 
 			s.Run()
