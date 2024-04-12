@@ -1,16 +1,13 @@
 package cluster
 
 import (
+	"calmk8s/internal/library/ck8s/informer"
+	"calmk8s/internal/model"
 	"calmk8s/internal/model/input/k8sin"
 	"context"
+	"k8s.io/client-go/informers"
 
-	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/clientcmd"
-
-	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 )
 
 type sCluster struct{}
@@ -19,60 +16,37 @@ func NewCluster() *sCluster {
 	return &sCluster{}
 }
 
-type K8sClient struct {
-	Name          string
-	Client        *kubernetes.Clientset
-	ConfigContent []byte
+type K8sInformer struct {
+	Name     string
+	stopCh   chan struct{}
+	config   *model.ClusterConfig
+	Informer *informers.SharedInformerFactory
 }
 
-var AllCluster = make(map[string]*K8sClient)
-
-func (s *sCluster) List(ctx context.Context) (list []*k8sin.Cluster, err error) {
-	return
-}
+var AllCluster = make(map[string]*K8sInformer)
 
 func (s *sCluster) Create(ctx context.Context, in *k8sin.Cluster) (err error) {
 	if _, ok := AllCluster[in.Name]; ok {
-		g.Log().Fatal(ctx, "client already exist")
+		g.Log().Fatal(ctx, "k8s informer already exist")
 		return nil
 	}
 
-	client, err := s.Client(ctx, in)
-	if err != nil {
-		return err
-	}
-
-	AllCluster[in.Name] = client
-
-	return nil
-}
-
-func (s *sCluster) Client(ctx context.Context, in *k8sin.Cluster) (*K8sClient, error) {
-	cfg, err := s.Config(ctx, in)
-	if err != nil {
-		return nil, err
-	}
-
-	client, err := kubernetes.NewForConfig(cfg)
-	return &K8sClient{
+	cfg := &model.ClusterConfig{
+		Mode:          in.Authentication.Mode,
 		ConfigContent: in.Authentication.ConfigFileContent,
-		Name:          in.Name,
-		Client:        client,
-	}, nil
-}
-
-func (s *sCluster) Config(ctx context.Context, in *k8sin.Cluster) (*rest.Config, error) {
-	if in.Authentication.Mode != "configfile" {
-		g.Log().Errorf(ctx, "can not support without config file")
-		return nil, gerror.New("can not support without config file")
 	}
 
-	cfg, err := clientcmd.BuildConfigFromKubeconfigGetter("", func() (*clientcmdapi.Config, error) {
-		return clientcmd.Load(in.Authentication.ConfigFileContent)
-	})
+	k8sInformer := &K8sInformer{
+		Name:   in.Name,
+		stopCh: make(chan struct{}),
+		config: cfg,
+	}
+
+	k8sInformer.Informer, err = informer.NewSharedInformerFactory(k8sInformer.config, k8sInformer.stopCh)
 	if err != nil {
-		return nil, err
+		return nil
 	}
 
-	return cfg, nil
+	AllCluster[in.Name] = k8sInformer
+	return nil
 }
