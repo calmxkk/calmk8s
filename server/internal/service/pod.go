@@ -6,12 +6,14 @@
 package service
 
 import (
+	"calmk8s/internal/model/input/k8sin"
 	"context"
 )
 
 type (
 	IPod interface {
-		List(ctx context.Context)
+		GetPodByName(ctx context.Context, in *k8sin.GetPodInp) error
+		List(ctx context.Context, in *k8sin.GetPodInp) error
 	}
 )
 

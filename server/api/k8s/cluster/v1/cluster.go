@@ -7,7 +7,7 @@ import (
 )
 
 type ListClusterReq struct {
-	g.Meta `path:"/cluster/list" method:"get" tags:"clister" summary:"获得集群列表"`
+	g.Meta `path:"/cluster/list" method:"get" tags:"cluster" summary:"获得集群列表"`
 }
 
 type ListClusterRes struct {
@@ -15,7 +15,7 @@ type ListClusterRes struct {
 }
 
 type CreateClusterReq struct {
-	g.Meta `path:"/cluster/create" method:"post" tags:"clister" summary:"获得集群列表"`
+	g.Meta `path:"/cluster/create" method:"post" tags:"cluster" summary:"创建集群"`
 	k8sin.Cluster
 }
 

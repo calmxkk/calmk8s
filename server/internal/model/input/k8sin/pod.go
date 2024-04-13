@@ -11,3 +11,8 @@ type PodSpec struct {
 	RestartPolicy string      `json:"restartPolicy"`
 }
 
+type GetPodInp struct {
+	ClusterName string `json:"cluster_name"`
+	NameSpace   string `json:"name_space"`
+	PodName     string `json:"pod_name"`
+}

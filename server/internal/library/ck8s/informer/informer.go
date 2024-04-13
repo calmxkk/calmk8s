@@ -3,18 +3,19 @@ package informer
 import (
 	"calmk8s/internal/library/ck8s/client"
 	"calmk8s/internal/model"
+	"context"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/informers"
 	"time"
 )
 
-func NewSharedInformerFactory(config *model.ClusterConfig, stop <-chan struct{}) (informers.SharedInformerFactory, error) {
+func NewSharedInformerFactory(ctx context.Context, config *model.ClusterConfig, stop <-chan struct{}) (informers.SharedInformerFactory, error) {
 	var (
 		cli = &client.Client{}
 		err error
 	)
 
-	cli, err = client.NewClient(config)
+	cli, err = client.NewClient(ctx, config)
 	if err != nil {
 		return nil, err
 	}
