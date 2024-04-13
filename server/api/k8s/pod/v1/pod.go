@@ -13,7 +13,6 @@ type CreatePodReq struct {
 }
 
 type CreatePodRes struct {
-	k8sin.Pod
 }
 
 type GetPodReq struct {
@@ -22,7 +21,7 @@ type GetPodReq struct {
 }
 
 type GetPodRes struct {
-	*k8sin.Pod
+	Data *k8sin.GetPodRes
 }
 
 type ListPodReq struct {
@@ -31,4 +30,5 @@ type ListPodReq struct {
 }
 
 type ListPodRes struct {
+	Data []*k8sin.GetPodRes `json:"data"`
 }
