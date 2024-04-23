@@ -2,6 +2,7 @@ package router
 
 import (
 	"calmk8s/internal/controller/k8s/cluster"
+	"calmk8s/internal/controller/k8s/deployment"
 	"calmk8s/internal/controller/k8s/pod"
 	"context"
 
@@ -15,6 +16,7 @@ func K8s(ctx context.Context, group *ghttp.RouterGroup) {
 		group.Bind(
 			pod.NewV1(),
 			cluster.NewV1(),
+			deployment.NewV1(),
 		)
 	})
 }
