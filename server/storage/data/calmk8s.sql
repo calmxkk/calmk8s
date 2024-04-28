@@ -44,10 +44,111 @@ INSERT INTO `ck8s_user` (`id`, `role`, `real_name`, `username`, `password_hash`,
 --
 
 CREATE TABLE IF NOT EXISTS `ck8s_cluster` (
-  `id` bigint NOT NULL COMMENT '主键',
-  `name` varchar(32) NOT NULL DEFAULT '' COMMENT '集群名称',
-  `configstr` varchar(65535) DEFAULT NULL COMMENT '配置文件',
-  `created_by` datetime DEFAULT NULL COMMENT '创建用户',
-  `created_at` datetime DEFAULT NULL COMMENT '创建时间',
-  `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
+    `id` bigint NOT NULL COMMENT '主键',
+    `name` varchar(32) NOT NULL DEFAULT '' COMMENT '集群名称',
+    `config_str` varchar(65535) DEFAULT NULL COMMENT '配置文件',
+    `created_by` datetime DEFAULT NULL COMMENT '创建用户',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间'
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COMMENT='集群表';
+
+
+CREATE TABLE IF NOT EXISTS `containers` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `container_id` varchar(255) NOT NULL COMMENT '容器ID',
+    `name` varchar(255) NOT NULL COMMENT '名称',
+    `image` varchar(255) NOT NULL COMMENT '镜像',
+    `ip` varchar(255) NOT NULL COMMENT 'IP地址',
+    `state` varchar(255) NOT NULL COMMENT '状态',
+    `uptime` varchar(255) NOT NULL COMMENT '运行时间',
+    `cpu_percent` float NOT NULL COMMENT 'CPU使用率',
+    `mem_percent` float NOT NULL COMMENT '内存使用率',
+    `mem_usage` float NOT NULL COMMENT '内存使用量',
+    `mem_limit` float NOT NULL COMMENT '内存限制',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='容器表';
+
+
+CREATE TABLE IF NOT EXISTS `images` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `image_id` varchar(255) NOT NULL COMMENT '镜像ID',
+    `name` varchar(255) NOT NULL COMMENT '名称',
+    `tag` varchar(255) NOT NULL COMMENT '标签',
+    `created` varchar(255) NOT NULL COMMENT '创建时间',
+    `size` varchar(255) NOT NULL COMMENT '大小',
+    `number` int NOT NULL COMMENT '数量',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='镜像表';
+
+CREATE TABLE IF NOT EXISTS `nets` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `ethernet` varchar(255) NOT NULL COMMENT '以太网接口',
+    `net_recv` float NOT NULL COMMENT '网络接收量',
+    `net_send` float NOT NULL COMMENT '网络发送量',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='网络表';
+
+
+CREATE TABLE IF NOT EXISTS `disks` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `device` varchar(255) NOT NULL COMMENT '设备名称',
+    `disk_percent` float NOT NULL COMMENT '磁盘使用百分比',
+    `disk_total` float NOT NULL COMMENT '磁盘总量',
+    `disk_used` float NOT NULL COMMENT '磁盘已使用量',
+    `disk_read` float NOT NULL COMMENT '磁盘读取量',
+    `disk_write` float NOT NULL COMMENT '磁盘写入量',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='磁盘表';
+
+
+CREATE TABLE IF NOT EXISTS `memories` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `mem_percent` float NOT NULL COMMENT '内存使用百分比',
+    `mem_total` float NOT NULL COMMENT '内存总量',
+    `mem_used` float NOT NULL COMMENT '内存已使用量',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='内存表';
+
+CREATE TABLE IF NOT EXISTS `cpus` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `cpu_percent` float NOT NULL COMMENT 'CPU使用百分比',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='CPU表';
+
+CREATE TABLE IF NOT EXISTS `hosts` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `timestamp` datetime NOT NULL COMMENT '时间戳',
+    `uptime` varchar(255) NOT NULL COMMENT '运行时间',
+    `hostname` varchar(255) NOT NULL COMMENT '主机名',
+    `os` varchar(255) NOT NULL COMMENT '操作系统',
+    `platform` varchar(255) NOT NULL COMMENT '平台',
+    `platform_version` varchar(255) NOT NULL COMMENT '平台版本',
+    `kernel_version` varchar(255) NOT NULL COMMENT '内核版本',
+    `kernel_arch` varchar(255) NOT NULL COMMENT '内核架构',
+    `created_at` datetime DEFAULT NULL COMMENT '创建时间',
+    `updated_at` datetime DEFAULT NULL COMMENT '修改时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='主机信息表';
+
+
+
+
+
