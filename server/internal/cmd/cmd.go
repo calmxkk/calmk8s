@@ -24,6 +24,8 @@ var (
 				router.K8s(ctx, group)
 			})
 
+			//signalListen(ctx)
+
 			s.Run()
 			return nil
 		},
