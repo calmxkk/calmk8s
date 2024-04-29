@@ -1,6 +1,11 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 DROP DATABASE IF EXISTS calmk8s;
 create database calmk8s;
 USE calmk8s;
@@ -52,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `ck8s_cluster` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COMMENT='集群表';
 
 
-CREATE TABLE IF NOT EXISTS `containers` (
+CREATE TABLE IF NOT EXISTS `ck8s_containers` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `container_id` varchar(255) NOT NULL COMMENT '容器ID',
@@ -71,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `containers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='容器表';
 
 
-CREATE TABLE IF NOT EXISTS `images` (
+CREATE TABLE IF NOT EXISTS `ck8s_images` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `image_id` varchar(255) NOT NULL COMMENT '镜像ID',
@@ -85,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `images` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='镜像表';
 
-CREATE TABLE IF NOT EXISTS `nets` (
+CREATE TABLE IF NOT EXISTS `ck8s_nets` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `ethernet` varchar(255) NOT NULL COMMENT '以太网接口',
@@ -97,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `nets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='网络表';
 
 
-CREATE TABLE IF NOT EXISTS `disks` (
+CREATE TABLE IF NOT EXISTS `ck8s_disks` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `device` varchar(255) NOT NULL COMMENT '设备名称',
@@ -112,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `disks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='磁盘表';
 
 
-CREATE TABLE IF NOT EXISTS `memories` (
+CREATE TABLE IF NOT EXISTS `ck8s_memories` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `mem_percent` float NOT NULL COMMENT '内存使用百分比',
@@ -123,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `memories` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='内存表';
 
-CREATE TABLE IF NOT EXISTS `cpus` (
+CREATE TABLE IF NOT EXISTS `ck8s_cpus` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `cpu_percent` float NOT NULL COMMENT 'CPU使用百分比',
@@ -132,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `cpus` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='CPU表';
 
-CREATE TABLE IF NOT EXISTS `hosts` (
+CREATE TABLE IF NOT EXISTS `ck8s_hosts` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
     `timestamp` datetime NOT NULL COMMENT '时间戳',
     `uptime` varchar(255) NOT NULL COMMENT '运行时间',

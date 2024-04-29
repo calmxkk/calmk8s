@@ -9,13 +9,17 @@ import (
 	"github.com/gogf/gf/v2/os/gtime"
 )
 
-// Cluster is the golang structure of table ck8s_cluster for DAO operations like Where/Data.
-type Cluster struct {
-	g.Meta    `orm:"table:ck8s_cluster, do:true"`
+// Images is the golang structure of table ck8s_images for DAO operations like Where/Data.
+type Images struct {
+	g.Meta    `orm:"table:ck8s_images, do:true"`
 	Id        interface{} // 主键
-	Name      interface{} // 集群名称
-	ConfigStr interface{} // 配置文件
-	CreatedBy *gtime.Time // 创建用户
+	Timestamp *gtime.Time // 时间戳
+	ImageId   interface{} // 镜像ID
+	Name      interface{} // 名称
+	Tag       interface{} // 标签
+	Created   interface{} // 创建时间
+	Size      interface{} // 大小
+	Number    interface{} // 数量
 	CreatedAt *gtime.Time // 创建时间
 	UpdatedAt *gtime.Time // 修改时间
 }

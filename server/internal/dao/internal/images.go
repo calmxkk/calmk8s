@@ -11,64 +11,72 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 )
 
-// ClusterDao is the data access object for table ck8s_cluster.
-type ClusterDao struct {
-	table   string         // table is the underlying table name of the DAO.
-	group   string         // group is the database configuration group name of current DAO.
-	columns ClusterColumns // columns contains all the column names of Table for convenient usage.
+// ImagesDao is the data access object for table ck8s_images.
+type ImagesDao struct {
+	table   string        // table is the underlying table name of the DAO.
+	group   string        // group is the database configuration group name of current DAO.
+	columns ImagesColumns // columns contains all the column names of Table for convenient usage.
 }
 
-// ClusterColumns defines and stores column names for table ck8s_cluster.
-type ClusterColumns struct {
+// ImagesColumns defines and stores column names for table ck8s_images.
+type ImagesColumns struct {
 	Id        string // 主键
-	Name      string // 集群名称
-	ConfigStr string // 配置文件
-	CreatedBy string // 创建用户
+	Timestamp string // 时间戳
+	ImageId   string // 镜像ID
+	Name      string // 名称
+	Tag       string // 标签
+	Created   string // 创建时间
+	Size      string // 大小
+	Number    string // 数量
 	CreatedAt string // 创建时间
 	UpdatedAt string // 修改时间
 }
 
-// clusterColumns holds the columns for table ck8s_cluster.
-var clusterColumns = ClusterColumns{
+// imagesColumns holds the columns for table ck8s_images.
+var imagesColumns = ImagesColumns{
 	Id:        "id",
+	Timestamp: "timestamp",
+	ImageId:   "image_id",
 	Name:      "name",
-	ConfigStr: "config_str",
-	CreatedBy: "created_by",
+	Tag:       "tag",
+	Created:   "created",
+	Size:      "size",
+	Number:    "number",
 	CreatedAt: "created_at",
 	UpdatedAt: "updated_at",
 }
 
-// NewClusterDao creates and returns a new DAO object for table data access.
-func NewClusterDao() *ClusterDao {
-	return &ClusterDao{
+// NewImagesDao creates and returns a new DAO object for table data access.
+func NewImagesDao() *ImagesDao {
+	return &ImagesDao{
 		group:   "default",
-		table:   "ck8s_cluster",
-		columns: clusterColumns,
+		table:   "ck8s_images",
+		columns: imagesColumns,
 	}
 }
 
 // DB retrieves and returns the underlying raw database management object of current DAO.
-func (dao *ClusterDao) DB() gdb.DB {
+func (dao *ImagesDao) DB() gdb.DB {
 	return g.DB(dao.group)
 }
 
 // Table returns the table name of current dao.
-func (dao *ClusterDao) Table() string {
+func (dao *ImagesDao) Table() string {
 	return dao.table
 }
 
 // Columns returns all column names of current dao.
-func (dao *ClusterDao) Columns() ClusterColumns {
+func (dao *ImagesDao) Columns() ImagesColumns {
 	return dao.columns
 }
 
 // Group returns the configuration group name of database of current dao.
-func (dao *ClusterDao) Group() string {
+func (dao *ImagesDao) Group() string {
 	return dao.group
 }
 
 // Ctx creates and returns the Model for current DAO, It automatically sets the context for current operation.
-func (dao *ClusterDao) Ctx(ctx context.Context) *gdb.Model {
+func (dao *ImagesDao) Ctx(ctx context.Context) *gdb.Model {
 	return dao.DB().Model(dao.table).Safe().Ctx(ctx)
 }
 
@@ -78,6 +86,6 @@ func (dao *ClusterDao) Ctx(ctx context.Context) *gdb.Model {
 //
 // Note that, you should not Commit or Rollback the transaction in function f
 // as it is automatically handled by this function.
-func (dao *ClusterDao) Transaction(ctx context.Context, f func(ctx context.Context, tx gdb.TX) error) (err error) {
+func (dao *ImagesDao) Transaction(ctx context.Context, f func(ctx context.Context, tx gdb.TX) error) (err error) {
 	return dao.Ctx(ctx).Transaction(ctx, f)
 }

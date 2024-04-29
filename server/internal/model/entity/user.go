@@ -10,23 +10,23 @@ import (
 
 // User is the golang structure for table user.
 type User struct {
-	Id                 int64       `json:"id"                 ` // ä¸»é”®
-	Role               int64       `json:"role"               ` // æƒé™ç­‰çº§
-	RealName           string      `json:"realName"           ` // çœŸå®žå§“å
-	Username           string      `json:"username"           ` // å¸å·
-	PasswordHash       string      `json:"passwordHash"       ` // å¯†ç 
-	Salt               string      `json:"salt"               ` // å¯†ç ç›
-	PasswordResetToken string      `json:"passwordResetToken" ` // å¯†ç é‡ç½®ä»¤ç‰Œ
-	Avatar             string      `json:"avatar"             ` // å¤´åƒ
-	Sex                int         `json:"sex"                ` // æ€§åˆ«
+	Id                 int64       `json:"id"                 ` // 主键
+	Role               int64       `json:"role"               ` // 权限等级
+	RealName           string      `json:"realName"           ` // 真实姓名
+	Username           string      `json:"username"           ` // 帐号
+	PasswordHash       string      `json:"passwordHash"       ` // 密码
+	Salt               string      `json:"salt"               ` // 密码盐
+	PasswordResetToken string      `json:"passwordResetToken" ` // 密码重置令牌
+	Avatar             string      `json:"avatar"             ` // 头像
+	Sex                int         `json:"sex"                ` // 性别
 	Qq                 string      `json:"qq"                 ` // qq
-	Email              string      `json:"email"              ` // é‚®ç®±
-	Mobile             string      `json:"mobile"             ` // æ‰‹æœºå·ç 
-	Birthday           *gtime.Time `json:"birthday"           ` // ç”Ÿæ—¥
-	Address            string      `json:"address"            ` // è”ç³»åœ°å€
-	LastActiveAt       *gtime.Time `json:"lastActiveAt"       ` // æœ€åŽæ´»è·ƒæ—¶é—´
-	Remark             string      `json:"remark"             ` // å¤‡æ³¨
-	Status             int         `json:"status"             ` // çŠ¶æ€
-	CreatedAt          *gtime.Time `json:"createdAt"          ` // åˆ›å»ºæ—¶é—´
-	UpdatedAt          *gtime.Time `json:"updatedAt"          ` // ä¿®æ”¹æ—¶é—´
+	Email              string      `json:"email"              ` // 邮箱
+	Mobile             string      `json:"mobile"             ` // 手机号码
+	Birthday           *gtime.Time `json:"birthday"           ` // 生日
+	Address            string      `json:"address"            ` // 联系地址
+	LastActiveAt       *gtime.Time `json:"lastActiveAt"       ` // 最后活跃时间
+	Remark             string      `json:"remark"             ` // 备注
+	Status             int         `json:"status"             ` // 状态
+	CreatedAt          *gtime.Time `json:"createdAt"          ` // 创建时间
+	UpdatedAt          *gtime.Time `json:"updatedAt"          ` // 修改时间
 }

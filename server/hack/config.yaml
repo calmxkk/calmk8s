@@ -9,6 +9,6 @@ gfcli:
 
   gen:
     dao:
-    - link:     "mysql:root:123456@tcp(127.0.0.1:3306)/calmk8s"
-      tables:   "ck8s_cluster,ck8s_user"
+    - link:     "mysql:root:123456@tcp(127.0.0.1:3306)/calmk8s?loc=Local&parseTime=true"
+      # tables:   "ck8s_cluster,ck8s_user"
       removePrefix: "ck8s_"

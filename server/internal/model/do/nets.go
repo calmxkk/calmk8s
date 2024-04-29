@@ -9,13 +9,14 @@ import (
 	"github.com/gogf/gf/v2/os/gtime"
 )
 
-// Cluster is the golang structure of table ck8s_cluster for DAO operations like Where/Data.
-type Cluster struct {
-	g.Meta    `orm:"table:ck8s_cluster, do:true"`
+// Nets is the golang structure of table ck8s_nets for DAO operations like Where/Data.
+type Nets struct {
+	g.Meta    `orm:"table:ck8s_nets, do:true"`
 	Id        interface{} // 主键
-	Name      interface{} // 集群名称
-	ConfigStr interface{} // 配置文件
-	CreatedBy *gtime.Time // 创建用户
+	Timestamp *gtime.Time // 时间戳
+	Ethernet  interface{} // 以太网接口
+	NetRecv   interface{} // 网络接收量
+	NetSend   interface{} // 网络发送量
 	CreatedAt *gtime.Time // 创建时间
 	UpdatedAt *gtime.Time // 修改时间
 }

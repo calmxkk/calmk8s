@@ -20,25 +20,25 @@ type UserDao struct {
 
 // UserColumns defines and stores column names for table ck8s_user.
 type UserColumns struct {
-	Id                 string // ä¸»é”®
-	Role               string // æƒé™ç­‰çº§
-	RealName           string // çœŸå®žå§“å
-	Username           string // å¸å·
-	PasswordHash       string // å¯†ç 
-	Salt               string // å¯†ç ç›
-	PasswordResetToken string // å¯†ç é‡ç½®ä»¤ç‰Œ
-	Avatar             string // å¤´åƒ
-	Sex                string // æ€§åˆ«
+	Id                 string // 主键
+	Role               string // 权限等级
+	RealName           string // 真实姓名
+	Username           string // 帐号
+	PasswordHash       string // 密码
+	Salt               string // 密码盐
+	PasswordResetToken string // 密码重置令牌
+	Avatar             string // 头像
+	Sex                string // 性别
 	Qq                 string // qq
-	Email              string // é‚®ç®±
-	Mobile             string // æ‰‹æœºå·ç 
-	Birthday           string // ç”Ÿæ—¥
-	Address            string // è”ç³»åœ°å€
-	LastActiveAt       string // æœ€åŽæ´»è·ƒæ—¶é—´
-	Remark             string // å¤‡æ³¨
-	Status             string // çŠ¶æ€
-	CreatedAt          string // åˆ›å»ºæ—¶é—´
-	UpdatedAt          string // ä¿®æ”¹æ—¶é—´
+	Email              string // 邮箱
+	Mobile             string // 手机号码
+	Birthday           string // 生日
+	Address            string // 联系地址
+	LastActiveAt       string // 最后活跃时间
+	Remark             string // 备注
+	Status             string // 状态
+	CreatedAt          string // 创建时间
+	UpdatedAt          string // 修改时间
 }
 
 // userColumns holds the columns for table ck8s_user.

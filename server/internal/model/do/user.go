@@ -12,23 +12,23 @@ import (
 // User is the golang structure of table ck8s_user for DAO operations like Where/Data.
 type User struct {
 	g.Meta             `orm:"table:ck8s_user, do:true"`
-	Id                 interface{} // ä¸»é”®
-	Role               interface{} // æƒé™ç­‰çº§
-	RealName           interface{} // çœŸå®žå§“å
-	Username           interface{} // å¸å·
-	PasswordHash       interface{} // å¯†ç 
-	Salt               interface{} // å¯†ç ç›
-	PasswordResetToken interface{} // å¯†ç é‡ç½®ä»¤ç‰Œ
-	Avatar             interface{} // å¤´åƒ
-	Sex                interface{} // æ€§åˆ«
+	Id                 interface{} // 主键
+	Role               interface{} // 权限等级
+	RealName           interface{} // 真实姓名
+	Username           interface{} // 帐号
+	PasswordHash       interface{} // 密码
+	Salt               interface{} // 密码盐
+	PasswordResetToken interface{} // 密码重置令牌
+	Avatar             interface{} // 头像
+	Sex                interface{} // 性别
 	Qq                 interface{} // qq
-	Email              interface{} // é‚®ç®±
-	Mobile             interface{} // æ‰‹æœºå·ç 
-	Birthday           *gtime.Time // ç”Ÿæ—¥
-	Address            interface{} // è”ç³»åœ°å€
-	LastActiveAt       *gtime.Time // æœ€åŽæ´»è·ƒæ—¶é—´
-	Remark             interface{} // å¤‡æ³¨
-	Status             interface{} // çŠ¶æ€
-	CreatedAt          *gtime.Time // åˆ›å»ºæ—¶é—´
-	UpdatedAt          *gtime.Time // ä¿®æ”¹æ—¶é—´
+	Email              interface{} // 邮箱
+	Mobile             interface{} // 手机号码
+	Birthday           *gtime.Time // 生日
+	Address            interface{} // 联系地址
+	LastActiveAt       *gtime.Time // 最后活跃时间
+	Remark             interface{} // 备注
+	Status             interface{} // 状态
+	CreatedAt          *gtime.Time // 创建时间
+	UpdatedAt          *gtime.Time // 修改时间
 }

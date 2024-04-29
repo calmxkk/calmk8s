@@ -8,12 +8,16 @@ import (
 	"github.com/gogf/gf/v2/os/gtime"
 )
 
-// Cluster is the golang structure for table cluster.
-type Cluster struct {
+// Images is the golang structure for table images.
+type Images struct {
 	Id        int64       `json:"id"        ` // 主键
-	Name      string      `json:"name"      ` // 集群名称
-	ConfigStr string      `json:"configStr" ` // 配置文件
-	CreatedBy *gtime.Time `json:"createdBy" ` // 创建用户
+	Timestamp *gtime.Time `json:"timestamp" ` // 时间戳
+	ImageId   string      `json:"imageId"   ` // 镜像ID
+	Name      string      `json:"name"      ` // 名称
+	Tag       string      `json:"tag"       ` // 标签
+	Created   string      `json:"created"   ` // 创建时间
+	Size      string      `json:"size"      ` // 大小
+	Number    int         `json:"number"    ` // 数量
 	CreatedAt *gtime.Time `json:"createdAt" ` // 创建时间
 	UpdatedAt *gtime.Time `json:"updatedAt" ` // 修改时间
 }
