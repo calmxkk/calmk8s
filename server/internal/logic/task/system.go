@@ -2,22 +2,28 @@ package task
 
 import (
 	"calmk8s/internal/library/procutil"
+	"calmk8s/internal/service"
 	"context"
 	"fmt"
-	"github.com/gogf/gf/v2/frame/g"
 	"time"
+
+	"github.com/gogf/gf/v2/frame/g"
 )
 
 type sSystemTask struct {
 	timeDuration time.Duration
 }
 
-func NewUser() *sSystemTask {
+func NewSystemTask() *sSystemTask {
 	return &sSystemTask{}
 }
 
+func init() {
+	service.RegisterSystemTask(NewSystemTask())
+}
+
 func (d *sSystemTask) Run(ctx context.Context) {
-	d.timeDuration = g.Cfg().MustGet(ctx, "task.duration", "").Duration()
+	d.timeDuration = g.Cfg().MustGet(ctx, "systemTask.duration", "1").Duration()
 	go d.GetMemory(ctx)
 	go d.GetSystemInfo(ctx)
 }

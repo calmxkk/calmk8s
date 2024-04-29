@@ -3,8 +3,10 @@ package cmd
 import (
 	"calmk8s/utility/simple"
 	"context"
-	"github.com/gogf/gf/v2/os/gproc"
+	"os"
 	"sync"
+
+	"github.com/gogf/gf/v2/os/gproc"
 )
 
 var (
@@ -12,6 +14,11 @@ var (
 	serverWg          = sync.WaitGroup{}
 	once              sync.Once
 )
+
+// signalHandlerForOverall 关闭信号处理
+func signalHandlerForOverall(sig os.Signal) {
+	serverCloseSignal <- struct{}{}
+}
 
 // signalListen 信号监听
 func signalListen(ctx context.Context, handler ...gproc.SigHandler) {

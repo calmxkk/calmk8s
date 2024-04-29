@@ -1,5 +1,5 @@
 server:
-  address:     "0.0.0.0:8000"
+  address:     "0.0.0.0:8001"
   openapiPath: "/api.json"
   swaggerPath: "/swagger"
 
@@ -12,6 +12,8 @@ cache:
   adapter: "file"                    # 缓存驱动方式，支持：memory|redis|file，不填默认memory
   fileDir: "./storage/cache"         # 文件缓存路径，adapter=file时必填
 
+systemTask:
+  duration: 5s
 
 cluster:
   apiVersion: v1
