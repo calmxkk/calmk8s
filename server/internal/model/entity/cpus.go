@@ -10,9 +10,9 @@ import (
 
 // Cpus is the golang structure for table cpus.
 type Cpus struct {
-	Id         int64       `json:"id"         ` // 主键
-	Timestamp  *gtime.Time `json:"timestamp"  ` // 时间戳
-	CpuPercent float64     `json:"cpuPercent" ` // CPU使用百分比
-	CreatedAt  *gtime.Time `json:"createdAt"  ` // 创建时间
-	UpdatedAt  *gtime.Time `json:"updatedAt"  ` // 修改时间
+	Id         int64       `json:"id"         description:"主键"`
+	Timestamp  *gtime.Time `json:"timestamp"  description:"时间戳"`
+	CpuPercent float64     `json:"cpuPercent" description:"CPU使用百分比"`
+	CreatedAt  *gtime.Time `json:"createdAt"  description:"创建时间"`
+	UpdatedAt  *gtime.Time `json:"updatedAt"  description:"修改时间"`
 }

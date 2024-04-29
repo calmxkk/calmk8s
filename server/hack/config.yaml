@@ -12,3 +12,8 @@ gfcli:
     - link:     "mysql:root:123456@tcp(127.0.0.1:3306)/calmk8s?loc=Local&parseTime=true"
       # tables:   "ck8s_cluster,ck8s_user"
       removePrefix: "ck8s_"
+      descriptionTag: true
+      noModelComment: true
+      jsonCase: "CamelLower"
+      gJsonSupport: true
+      clear: false
