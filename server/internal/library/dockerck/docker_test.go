@@ -1,7 +1,10 @@
 package dockerck
 
-import "testing"
+import (
+	"context"
+)
 
-func TestDocker(t *testing.T) {
-	_ = NewClient()
+func main() {
+	cli := NewClient()
+	cli.GetImageByName(context.TODO(), "nginx:latest")
 }

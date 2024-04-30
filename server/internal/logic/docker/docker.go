@@ -16,5 +16,8 @@ func NewDocker() *sDocker {
 }
 
 func (s *sDocker) Version(ctx context.Context) {
-	s.client.cli.
+}
+
+func (s *sDocker) GetImageByName(ctx context.Context, imageName string) {
+	s.client.GetImageByName(ctx, imageName)
 }

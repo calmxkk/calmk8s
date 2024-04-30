@@ -1,6 +1,9 @@
 package dockerck
 
 import (
+	"context"
+
+	"github.com/docker/docker/api/types/image"
 	dockerClient "github.com/docker/docker/client"
 )
 
@@ -17,4 +20,8 @@ func NewClient() *Client {
 	return &Client{
 		cli: cli,
 	}
+}
+
+func (c *Client) GetImageByName(ctx context.Context, imageName string) {
+	c.cli.ImagePull(ctx, imageName, image.PullOptions{})
 }
