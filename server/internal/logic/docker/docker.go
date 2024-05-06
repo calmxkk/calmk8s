@@ -1,17 +1,17 @@
 package docker
 
 import (
-	"calmk8s/internal/library/dockerck"
+	"calmk8s/internal/library/dockerutil"
 	"context"
 )
 
 type sDocker struct {
-	client *dockerck.Client
+	client *dockerutil.Client
 }
 
 func NewDocker() *sDocker {
 	return &sDocker{
-		client: dockerck.NewClient(),
+		client: dockerutil.NewClient(),
 	}
 }
 
